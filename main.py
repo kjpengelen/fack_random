@@ -1,47 +1,28 @@
 # import statements
 import behaviors as beh
-import time
+import converse as conv
 
 #globals (preferably not)
 
-#function definitions
-def DoStateInit():
-    """Do initialiazation"""
-    
-    beh.InitRobot()
-    
-    return "To basicWave"
-    
-def action1(mystate):
-    """Execute basicWave"""
+dialogone=True
+dialogtwo=False
+actionone=False
 
-    time.sleep(0)
-    if mystate=="To basicWave":
-        beh.basicWave()
-        pass
-    elif mystate=="To followMe":
-        pass
-    return "To followMe"
+# Step 1
+if dialogone==True:
+    conv.Greeting()
+    print("end cycle 1")
+    dialogone=False
+    dialogtwo=True
 
-def action2():
-    """Execute followMe"""
+# Step 2
+if dialogtwo==True:
+    conv.OfferHelp()
+    dialogtwo=False
+    actionone=True
 
-    time.sleep(5)
-    beh.followMe()
-    return "Done"
+# Step 3
 
-#main
-def main():
-    state="Init"
-    while not state=="Done":
-        if state=="To basicWave":
-            state=action1(state)
-        elif state=="To followMe":
-            state=action2()
-        elif state=="Init":
-            state=DoStateInit()
-
-if __name__=="__main__":
-    main()
-    
-
+if actionone==True:
+    nao.Say("Bye")
+    actionone=False

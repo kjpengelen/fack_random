@@ -8,7 +8,9 @@ def InitRobot():
 # marvin = 192.168.0.115
 # bender = 192.168.0.120
 
-   
+def LeadTheWay():
+    nao.Say("Now executing Lead The Way")
+
 def basicWave():
     names = list()
     times = list()
